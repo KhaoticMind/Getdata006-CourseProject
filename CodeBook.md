@@ -2,7 +2,7 @@ CodeBook
 ========================
 
 #Data description
-This dataset is composed of 68 variables.
+This dataset is composed of 68 variables and 180 observations.
 
 Features 3 to 68 are the average of a subset of the observed values from [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip). The original values come from the data capture of an accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ captured on a 50hz interval (variables containing *Time* on their name), and from applying the fast fourrier transformation  on some of the signals (variables with *Frequency* on their names).
 
