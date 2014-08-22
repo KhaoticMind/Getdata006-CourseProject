@@ -51,6 +51,8 @@ measureNames <- as.character(features[measurements, 2])
 measureNames <- gsub("-|\\(|\\)","", measureNames)
 measureNames <- gsub("std","StdDevi", measureNames)
 measureNames <- gsub("mean","Mean", measureNames)
+measureNames <- gsub("^t","Time", measureNames)
+measureNames <- gsub("^f","Frequency", measureNames)
 #And set the names to the subSet
 namedSet <- subSet
 names(namedSet) <- c("subject", "activity", measureNames)
