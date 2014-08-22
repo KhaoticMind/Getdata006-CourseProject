@@ -49,16 +49,19 @@ subSet$activity <- factor(subSet$activity, levels=actLabels[,1] , labels=actLabe
 measureNames <- as.character(features[measurements, 2])
 #Lets make the names a little more readable by replacing some stuff
 measureNames <- gsub("-|\\(|\\)","", measureNames)
-measureNames <- gsub("std","StdDevi-", measureNames)
-measureNames <- gsub("mean","Mean-", measureNames)
+measureNames <- gsub("std","StdDevi", measureNames)
+measureNames <- gsub("mean","Mean", measureNames)
 #And set the names to the subSet
-names(subSet) <- c("subject", "activity", measureNames)
+namedSet <- subSet
+names(namedSet) <- c("subject", "activity", measureNames)
 
 
 ###################
 ##5- Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 #The aggregate function does most of the job
-finalSet <- aggregate(subSet[,c(-1,-2)], by=list(subSet$subject, subSet$activity) , FUN="mean")
+finalSet <- aggregate(namedSet[,c(-1,-2)], by=list(namedSet$subject, namedSet$activity) , FUN="mean")
+#Renamed the variables so that they begin with "Avergage-" to make their meaning clearer
 measureNames <- gsub("^", "Average-", measureNames)
-names(finalSet) <- names(subSet)
+names(finalSet) <- c("subject", "activity", measureNames)
+#Save the data
 write.table(finalSet, row.name=FALSE, file="final_tidy_dataset.txt")
